@@ -1,0 +1,66 @@
+Here's a draft README file for your project:
+
+---
+
+# LangGraph-Based Research Assistant
+
+This project is a research assistant application built using LangGraph that integrates multiple functionalities such as querying PDFs, generating sections of research papers using large language models (LLMs), and performing Wikipedia searches. The assistant routes user queries to the most relevant data source based on the context, allowing for efficient and accurate information retrieval.
+
+## Features
+
+- **PDF Retrieval**: Extracts and retrieves content from PDF files using a retriever. The content is split into chunks, embedded using HuggingFace's Instructor Embeddings, and stored in a FAISS vector store for efficient retrieval based on user queries.
+
+- **Research Paper Generation**: Utilizes the `ChatGroq` LLM to generate sections of research papers, such as SOPs, abstracts, etc., based on user input. The model used for this task is `llama3-8b-8192`.
+
+- **Wikipedia Search**: Integrates Wikipedia search functionality to fetch information directly from Wikipedia using `WikipediaAPIWrapper`.
+
+- **Query Routing**: Automatically routes user queries to the appropriate data source (PDF, research paper generation, or Wikipedia) using a custom routing function.
+
+## Installation
+
+To get started, clone the repository and install the necessary dependencies:
+
+```bash
+git clone https://github.com/your_username/research-assistant.git
+cd research-assistant
+
+pip install -U langchain_community tiktoken langchain-groq langchainhub chromadb langchain langgraph langchain_huggingface
+pip install InstructorEmbedding faiss-cpu PyPDF2 sentence-transformers==2.2.2
+pip install wikipedia arxiv
+```
+
+## Usage
+
+1. **PDF Handling**: The assistant can read and process PDF files, split the content into manageable chunks, and store them in a FAISS vector store for quick retrieval.
+
+2. **Routing Queries**: User queries are automatically routed based on the context:
+   - Queries mentioning "PDF" or "context" are directed to the PDF retriever.
+   - Queries related to research paper sections (e.g., SOP, abstract) are directed to the LLM for generation.
+   - General queries are directed to the Wikipedia search function.
+
+3. **Executing Queries**: You can run queries by providing the input question to the assistant, which will process and retrieve the appropriate information.
+
+Example:
+
+```python
+inputs = {
+    "question": "What is agent?"
+}
+for output in app.stream(inputs):
+    pprint(output)
+```
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any questions or feedback, please feel free to reach out to [Sarthak Pandey](mailto:your_email@example.com).
+
+---
+
+Feel free to modify and expand upon this template as needed!
