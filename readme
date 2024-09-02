@@ -1,7 +1,3 @@
-Here's a draft README file for your project:
-
----
-
 # LangGraph-Based Research Assistant
 
 This project is a research assistant application built using LangGraph that integrates multiple functionalities such as querying PDFs, generating sections of research papers using large language models (LLMs), and performing Wikipedia searches. The assistant routes user queries to the most relevant data source based on the context, allowing for efficient and accurate information retrieval.
